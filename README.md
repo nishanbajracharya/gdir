@@ -87,7 +87,7 @@ To contribute, follow one of the two options:
 
 - **Send a Pull Request**
 
-  Fork this project and send a pull request to the `master` branch.
+  Fork this project and send a pull request to the `main` branch.
 
 ## License
 MIT
