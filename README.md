@@ -34,7 +34,7 @@ Git branch to filter.
 
 **Option**: `-b, --branch`
 
-**Default**: `` *Represents current branch*
+**Default**: ` ` *Represents current branch*
 
 ```sh
 $ gdir --branch DEV-123
