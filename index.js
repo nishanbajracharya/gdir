@@ -31,37 +31,17 @@ const filteredDirectories = gitDirectories.filter((dir) =>
   isBranch(dir, options.branch)
 );
 
-function showBranches() {
+function display(type) {
   const table = new Table();
 
   filteredDirectories.forEach((dir) =>
     table.push([
       chalk.bold.green(getDirectoryNameFromPath(dir)),
-      getCurrentBranch(dir),
+      type === 'status' ? getStatus(dir) : getCurrentBranch(dir),
     ])
   );
 
   console.log(table.toString());
 }
 
-function showStatuses() {
-  const table = new Table();
-
-  filteredDirectories.forEach((dir) =>
-    table.push({
-      [chalk.bold.green(getDirectoryNameFromPath(dir))]: getStatus(dir),
-    })
-  );
-
-  console.log(table.toString());
-}
-
-switch (options.type) {
-  case 'status':
-    showStatuses();
-    break;
-
-  case 'branch':
-  default:
-    showBranches();
-}
+display(options.type);
