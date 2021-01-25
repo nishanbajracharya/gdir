@@ -10,5 +10,8 @@
     "git"
   ],
   "author": "Nishan Bajracharya <nisbaj11@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^7.0.0"
+  }
 }
