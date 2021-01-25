@@ -10,7 +10,12 @@ function isBranch(path, branch) {
   return currentBranch.includes(branch);
 }
 
+function getStatus(path) {
+  return execSync(`cd ${path} && git status`).toString().trim();
+}
+
 module.exports = {
   isBranch,
+  getStatus,
   getCurrentBranch,
 };
