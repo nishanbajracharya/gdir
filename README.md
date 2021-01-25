@@ -29,6 +29,8 @@ $ gdir --path path/to/directory
 $ gdir -p ~/github
 ```
 
+![Path](images/path.png)
+
 #### Branch
 Git branch to filter.
 
@@ -51,6 +53,9 @@ $ gdir -b dev
 ```
 Shows any directory that match `dev` branch name.
 
+
+![Path](images/branch.png)
+
 #### Type
 Show current branch or status
 
@@ -67,6 +72,8 @@ Shows list of directories and their corresponding current branches
 $ gdir -t status
 ```
 Shows list of directories and their current branch statuses
+
+![Path](images/type.png)
 
 ##### Note: All options can be used in combination
 ```sh
