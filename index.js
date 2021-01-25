@@ -1,6 +1,7 @@
 const { program } = require('commander');
 
-const { getDirectories, hasDirectory } = require('./dir');
+const { getCurrentBranch } = require('./git');
+const { getDirectories, hasDirectory, getDirectoryNameFromPath } = require('./dir');
 
 const GIT_DIR = '.git';
 
@@ -15,4 +16,6 @@ const directories = getDirectories(options.path);
 
 const gitDirectories = directories.filter((dir) => hasDirectory(dir, GIT_DIR));
 
-console.log(gitDirectories);
+gitDirectories.forEach(dir => {
+  console.log(getDirectoryNameFromPath(dir), getCurrentBranch(dir));
+});
