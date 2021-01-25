@@ -1,6 +1,12 @@
 # Git Dir
 A command line tool to list git directories with their current branches or statuses.
 
+## Installation
+`gdir` can be installed as a global command using npm and github.
+```sh
+$ npm install -g nishanbajracharya/gdir
+```
+
 ## Usage
 The basic usage of `gdir` is to run the supplied command in a terminal session.
 ```sh
