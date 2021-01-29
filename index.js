@@ -11,37 +11,64 @@ const {
 
 const GIT_DIR = '.git';
 
-program
-  .option('-p, --path <value>', 'Path of directory to check repos in', '.')
-  .option('-b, --branch <value>', 'Git branch to filter', '')
-  .addOption(
-    new Option('-t, --type <value>', 'Show current branch or status')
-      .choices(['branch', 'status'])
-      .default('branch')
-  )
-  .parse();
+try {
+  program
+    .option('-p, --path <value>', 'Path of directory to check repos in', '.')
+    .option('-b, --branch <value>', 'Git branch to filter', '')
+    .addOption(
+      new Option('-t, --type <value>', 'Show current branch or status')
+        .choices(['branch', 'status'])
+        .default('branch')
+    )
+    .parse();
 
-const options = program.opts();
+  const options = program.opts();
 
-const directories = getDirectories(options.path);
+  program
+    .arguments('[path]')
+    .description('Arguments', {
+      path: 'Path of directory to check repos in',
+      branch: 'Git branch to filter',
+      type: 'Show current branch or status',
+    })
+    .action((path) => {
+      if (path) {
+        options.path = path;
+      }
+    })
+    .parse();
 
-const gitDirectories = directories.filter((dir) => hasDirectory(dir, GIT_DIR));
+  const directories = getDirectories(options.path);
 
-const filteredDirectories = gitDirectories.filter((dir) =>
-  isBranch(dir, options.branch)
-);
-
-function display(type) {
-  const table = new Table();
-
-  filteredDirectories.forEach((dir) =>
-    table.push([
-      chalk.bold.green(getDirectoryNameFromPath(dir)),
-      type === 'status' ? getStatus(dir) : getCurrentBranch(dir),
-    ])
+  const gitDirectories = directories.filter((dir) =>
+    hasDirectory(dir, GIT_DIR)
   );
 
+  const filteredDirectories = gitDirectories.filter((dir) =>
+    isBranch(dir, options.branch)
+  );
+
+  function display(type) {
+    const table = new Table();
+
+    filteredDirectories.forEach((dir) =>
+      table.push([
+        chalk.bold.green(getDirectoryNameFromPath(dir)),
+        type === 'status' ? getStatus(dir) : getCurrentBranch(dir),
+      ])
+    );
+
+    console.log(table.toString());
+  }
+
+  display(options.type);
+} catch (e) {
+  console.log(
+    chalk.bold.redBright('An error occured! Make sure your path is correct.')
+  );
+
+  const table = new Table();
+
+  table.push([e.message]);
   console.log(table.toString());
 }
-
-display(options.type);
