@@ -1,10 +1,10 @@
 {
   "name": "gdir",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A cli tool to list down git repos in a directory",
   "main": "lib/index.js",
   "scripts": {
-    "build": "microbundle --type node -f cjs -i *.js package.json"
+    "build": "microbundle --type node -f cjs src/*.js"
   },
   "keywords": [
     "git"

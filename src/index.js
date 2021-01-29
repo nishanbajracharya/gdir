@@ -4,8 +4,6 @@ const chalk = require('chalk');
 const Table = require('cli-table');
 const { program, Option } = require('commander');
 
-const pkg = require('./package.json');
-
 const { getStatus, getCurrentBranch, isBranch } = require('./git');
 const {
   hasDirectory,
@@ -17,7 +15,6 @@ const GIT_DIR = '.git';
 
 try {
   program
-    .version(pkg.version)
     .option('-p, --path <value>', 'Path of directory to check repos in', '.')
     .option('-b, --branch <value>', 'Git branch to filter', '')
     .addOption(
@@ -34,7 +31,6 @@ try {
     .description('Arguments', {
       path: 'Path of directory to check repos in',
       branch: 'Git branch to filter',
-      type: 'Show current branch or status',
     })
     .action((path, branch) => {
       if (path) {
