@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const chalk = require('chalk');
 const Table = require('cli-table');
 const { program, Option } = require('commander');
