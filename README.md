@@ -3,6 +3,13 @@ A command line tool to list git directories with their current branches or statu
 
 ## Installation
 `gdir` can be installed as a global command using npm and github.
+
+**NPM**
+```sh
+$ npm install -g gdir
+```
+
+**Github**
 ```sh
 $ npm install -g nishanbajracharya/gdir
 ```
