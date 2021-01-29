@@ -2,9 +2,9 @@
   "name": "gdir",
   "version": "0.2.2",
   "description": "A cli tool to list down git repos in a directory",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "rollup -c"
+    "build": "microbundle --type node -f cjs -i *.js package.json"
   },
   "keywords": [
     "git"
@@ -20,7 +20,7 @@
     "gdir": "./lib/index.js"
   },
   "devDependencies": {
-    "rollup": "^2.38.0"
+    "microbundle": "^0.13.0"
   },
   "repository": {
     "type": "git",
